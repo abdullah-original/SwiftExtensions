@@ -1,7 +1,7 @@
 import Foundation
 
 @propertyWrapper
-public struct UserDefaultsStore<Value: Codable> {
+public struct UserDefaultsStore<Value> {
     private let key: String
     private let defaultValue: Value?
     private let storage: UserDefaults

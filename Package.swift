@@ -8,7 +8,7 @@ let package = Package(
     products: [
         .library(
             name: "SwiftExtensions",
-            targets: ["FoundationExtensions", "UIKitExtensions", "SwiftUIExtensions"]   
+            targets: ["FoundationExtensions", "UIKitExtensions", "SwiftUIExtensions"]
         ),
     ],
     targets: [
@@ -23,6 +23,11 @@ let package = Package(
         .target(
             name: "SwiftUIExtensions",
             path: "Sources/SwiftUIExtensions"
+        ),
+        .testTarget(
+            name: "FoundationExtensionsTests",
+            dependencies: ["FoundationExtensions"],
+            path: "Tests/FoundationExtensionsTests"
         )
     ],
     swiftLanguageModes: [.v6]
