@@ -8,7 +8,7 @@ let package = Package(
     products: [
         .library(
             name: "SwiftExtensions",
-            targets: ["FoundationExtensions", "UIKitExtensions"]
+            targets: ["FoundationExtensions", "UIKitExtensions", "SwiftUIExtensions"]   
         ),
     ],
     targets: [
@@ -19,31 +19,11 @@ let package = Package(
         .target(
             name: "UIKitExtensions",
             path: "Sources/UIKitExtensions"
+        ),
+        .target(
+            name: "SwiftUIExtensions",
+            path: "Sources/SwiftUIExtensions"
         )
     ],
     swiftLanguageModes: [.v6]
 )
-
-//private let targets: [Target] = {
-//    let foundationExtensionsTarget: Target = .target(
-//        name: "FoundationExtensions",
-//        path: "Sources/FoundationExtensions"
-//    )
-//#if canImport(UIKit)
-//    let uiKitExtensionsTarget: Target = .target(
-//        name: "UIKitExtensions",
-//        path: "Sources/UIKitExtensions"
-//    )
-//    return [foundationExtensionsTarget, uiKitExtensionsTarget]
-//#else
-//    return [foundationExtensionsTarget]
-//#endif
-//}()
-//
-//private let productTargets: [String] = {
-//#if canImport(UIKit)
-//    return ["FoundationExtensions", "UIKitExtensions"]
-//#else
-//    return ["FoundationExtensions"]
-//#endif
-//}()
