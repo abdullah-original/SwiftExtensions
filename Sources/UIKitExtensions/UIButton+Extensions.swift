@@ -9,16 +9,16 @@ public extension UIButton {
         type: UIButton.ButtonType? = nil,
         role: UIButton.Role? = nil
     ) {
-        self.init()
-        self.setTitle(title, for: .normal)
-        self.setImage(image, for: .normal)
-        if let role {
-            self.role = role
-        }
         if let type {
             self.init(type: type, primaryAction: action)
         } else {
             self.init(primaryAction: action)
+        }
+
+        self.setTitle(title, for: .normal)
+        self.setImage(image, for: .normal)
+        if let role {
+            self.role = role
         }
     }
     
@@ -46,17 +46,18 @@ public extension UIButton {
         type: UIButton.ButtonType? = nil,
         role: UIButton.Role? = nil
     ) {
-        self.init()
-        self.setTitle(title, for: .normal)
-        self.setImage(image, for: .normal)
-        if let role {
-            self.role = role
-        }
         if let type {
             self.init(type: type, primaryAction: action)
         } else {
             self.init(primaryAction: action)
         }
+
+        self.setTitle(title, for: .normal)
+        self.setImage(image, for: .normal)
+        if let role {
+            self.role = role
+        }
+
     }
     
     convenience init(
@@ -66,16 +67,16 @@ public extension UIButton {
         type: UIButton.ButtonType? = nil,
         role: UIButton.Role? = nil
     ) {
-        self.init()
-        self.setAttributedTitle(attributedTitle, for: .normal)
-        self.setImage(image, for: .normal)
-        if let role {
-            self.role = role
-        }
         if let type {
             self.init(type: type, primaryAction: action)
         } else {
             self.init(primaryAction: action)
+        }
+
+        self.setAttributedTitle(attributedTitle, for: .normal)
+        self.setImage(image, for: .normal)
+        if let role {
+            self.role = role
         }
     }
     

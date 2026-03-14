@@ -8,7 +8,7 @@ public extension URLComponents {
         host: String?,
         port: Int?,
         path: String,
-        queryItems: [URLQueryItem]?,
+        queryItems: [URLQueryItem] = [],
         fragment: String?
     ) {
         self.init()

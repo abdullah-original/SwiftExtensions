@@ -18,11 +18,11 @@ public struct UserDefaultsStore<Value: Codable> {
     
     public var wrappedValue: Value? {
         get {
-            let value = storage.value(forKey: key) as? Value
+            let value = storage.object(forKey: key) as? Value
             return value ?? defaultValue
         }
         set {
-            storage.setValue(newValue, forKey: key)
+            storage.set(newValue, forKey: key)
         }
     }
 }
