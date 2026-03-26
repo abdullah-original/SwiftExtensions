@@ -12,8 +12,8 @@ public extension DateFormatter {
         self.dateStyle = dateStyle
         self.timeStyle = timeStyle
         self.calendar = calendar
-        self.locale = if let locale { locale } else { calendar.locale }
-        self.timeZone = if let timeZone { timeZone } else { calendar.timeZone }
+        self.locale = locale ?? calendar.locale
+        self.timeZone = timeZone ?? calendar.timeZone
     }
     
     convenience init(
@@ -25,7 +25,7 @@ public extension DateFormatter {
         self.init()
         self.dateFormat = dateFormat
         self.calendar = calendar
-        self.locale = if let locale { locale } else { calendar.locale }
-        self.timeZone = if let timeZone { timeZone } else { calendar.timeZone }
+        self.locale = locale ?? calendar.locale
+        self.timeZone = timeZone ?? calendar.timeZone
     }
 }
