@@ -6,6 +6,7 @@ public extension UIPickerView {
         self.init()
         self.dataSource = dataSource
         self.delegate = delegate
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 }
 

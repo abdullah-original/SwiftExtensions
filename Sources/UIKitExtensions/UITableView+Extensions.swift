@@ -9,10 +9,10 @@ public extension UITableView {
         registerCells: [UINib] = [],
         allowsSelection: Bool = false,
         style: UITableView.Style = .grouped,
-        tableHeaderView: UIView? = nil,
-        tableFooterView: UIView? = nil,
         backgroundColor: UIColor? = nil,
         backgroundView: UIView? = nil,
+        tableHeaderView: UIView? = nil,
+        tableFooterView: UIView? = nil,
         sectionHeaderHeight: CGFloat? = nil,
         sectionFooterHeight: CGFloat? = nil,
         rowHeight: CGFloat? = nil,
@@ -24,7 +24,6 @@ public extension UITableView {
         separatorInsetReference: UITableView.SeparatorInsetReference?,
         insetsContentViewsToSafeArea: Bool? = nil
     ) {
-
         self.init()
         self.prefetchDataSource = prefetchDataSource
         self.separatorStyle = separatorStyle

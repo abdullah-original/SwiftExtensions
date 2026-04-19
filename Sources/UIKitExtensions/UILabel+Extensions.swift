@@ -25,6 +25,7 @@ public extension UILabel {
         isUserInteractionEnabled: Bool? = nil
     ) {
         self.init()
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.text = text
         self.font = font
         self.textColor = textColor
@@ -64,6 +65,7 @@ public extension UILabel {
         isUserInteractionEnabled: Bool? = nil
     ) {
         self.init()
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.text = text
         self.isEnabled = isEnabled
         self.showsExpansionTextWhenTruncated = showsExpansionTextWhenTruncated

@@ -10,6 +10,7 @@ public extension UIRefreshControl {
         attributedTitle: NSAttributedString? = nil
     ) {
         self.init()
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.addTarget(target, action: action, for: event)
         if let tintColor = tintColor {
             self.tintColor = tintColor

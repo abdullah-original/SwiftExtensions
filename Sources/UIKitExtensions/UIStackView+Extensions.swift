@@ -12,7 +12,7 @@ public extension UIStackView {
         isLayoutMarginsRelativeArrangement: Bool? = nil
     ) {
         self.init(arrangedSubviews: arrangedSubviews)
-        
+        self.translatesAutoresizingMaskIntoConstraints = false
         if let axis { self.axis = axis }
         if let alignment { self.alignment = alignment }
         if let distribution { self.distribution = distribution }

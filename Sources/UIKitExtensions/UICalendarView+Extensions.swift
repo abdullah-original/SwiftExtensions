@@ -39,7 +39,9 @@ public extension UICalendarView {
         
         if let calendar {
             self.calendar = calendar
-            self.timeZone = calendar.timeZone
+            if timeZone == nil {
+                self.timeZone = calendar.timeZone
+            }
             if locale == nil, let calendarLocale = calendar.locale {
                 self.locale = calendarLocale
             }
@@ -52,8 +54,6 @@ public extension UICalendarView {
         if let locale {
             self.locale = locale
         }
-        
-        
     }
 }
 

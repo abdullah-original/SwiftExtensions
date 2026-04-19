@@ -14,7 +14,7 @@ public extension UIButton {
         } else {
             self.init(primaryAction: action)
         }
-
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.setTitle(title, for: .normal)
         self.setImage(image, for: .normal)
         if let role {
@@ -31,6 +31,7 @@ public extension UIButton {
         role: UIButton.Role? = nil
     ) {
         self.init()
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.setTitle(title, for: .normal)
         self.setImage(image, for: .normal)
         if let role {
@@ -51,7 +52,7 @@ public extension UIButton {
         } else {
             self.init(primaryAction: action)
         }
-
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.setTitle(title, for: .normal)
         self.setImage(image, for: .normal)
         if let role {
@@ -72,7 +73,7 @@ public extension UIButton {
         } else {
             self.init(primaryAction: action)
         }
-
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.setAttributedTitle(attributedTitle, for: .normal)
         self.setImage(image, for: .normal)
         if let role {
@@ -89,6 +90,7 @@ public extension UIButton {
         role: UIButton.Role? = nil
     ) {
         self.init()
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.setAttributedTitle(attributedTitle, for: .normal)
         self.setImage(image, for: .normal)
         if let role {

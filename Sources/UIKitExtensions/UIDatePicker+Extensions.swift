@@ -11,6 +11,7 @@ public extension UIDatePicker {
         preferredStyle: UIDatePickerStyle? = nil
     ) {
         self.init()
+        self.translatesAutoresizingMaskIntoConstraints = false
         if let mode { self.datePickerMode = mode }
         if let preferredStyle { self.preferredDatePickerStyle = preferredStyle }
         if let minimumDate { self.minimumDate = minimumDate }
@@ -25,6 +26,7 @@ public extension UIDatePicker {
         preferredStyle: UIDatePickerStyle? = nil
     ) {
         self.init()
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.datePickerMode = .countDownTimer
         if let countDownDuration {
             self.countDownDuration = countDownDuration
