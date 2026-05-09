@@ -11,3 +11,20 @@ public extension Dictionary {
         lhs.merge(rhs) { $1 }
     }
 }
+
+public extension Dictionary where Value: AdditiveArithmetic {
+    mutating func add(_ value: Value, forKey key: Key) {
+        self[key] = self[key, default: .zero] + value
+    }
+}
+
+
+public extension Dictionary where Value: RangeReplaceableCollection {
+    mutating func add(_ value: Value.Element, forKey key: Key) {
+        self[key] = self[key, default: .init()] + [value]
+    }
+
+    mutating func add(_ value: [Value.Element], forKey key: Key) {
+        self[key] = self[key, default: .init()] + value
+    }
+}

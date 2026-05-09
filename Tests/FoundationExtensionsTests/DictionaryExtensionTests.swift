@@ -25,4 +25,31 @@ struct DictionaryExtensionTests {
         
         #expect(lhs == expected)
     }
+    
+    @Test
+    func add_shouldInitalizeArray() {
+        var dict: [String: Int] = [:]
+
+        dict.add(2, forKey: "a")
+        
+        #expect(dict["a"] == 2)
+    }
+    
+    @Test
+    func add_givenValueIsIntArray_shouldInitializeArray() {
+        var dict: [String: [Int]] = [:]
+
+        dict.add(2, forKey: "a")
+        
+        #expect(dict["a"] == [2])
+    }
+    
+    @Test
+    func add_givenValueIsIntArrayAndInputIsIntArray_shouldInitializeArray() {
+        var dict: [String: [Int]] = [:]
+        
+        dict.add([2], forKey: "a")
+        
+        #expect(dict["a"] == [2])
+    }
 }
