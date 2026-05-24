@@ -8,7 +8,7 @@ struct OptionalExtensionTests {
     func insert_shouldInitalize_andInsertNewElement() {
         var optional: [String]? = nil
         
-        optional.insert("Hello")
+        optional.append("Hello")
         
         #expect(optional == ["Hello"])
     }
@@ -17,7 +17,7 @@ struct OptionalExtensionTests {
     func insert_shouldInsertNewElement() {
         var optional: [String]? = ["Hello"]
         
-        optional.insert("World")
+        optional.append("World")
         
         #expect(optional == ["Hello", "World"])
     }
