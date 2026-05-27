@@ -33,7 +33,9 @@ public extension UILabel {
         self.lineBreakMode = lineBreakMode
         self.lineBreakStrategy = lineBreakStrategy
         self.isEnabled = isEnabled
-        self.showsExpansionTextWhenTruncated = showsExpansionTextWhenTruncated
+        if #available(macCatalyst 15, *) {
+            self.showsExpansionTextWhenTruncated = showsExpansionTextWhenTruncated
+        }
         self.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
         self.allowsDefaultTighteningForTruncation = allowsDefaultTighteningForTruncation
         if let baselineAdjustment { self.baselineAdjustment = baselineAdjustment }
@@ -68,7 +70,9 @@ public extension UILabel {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.text = text
         self.isEnabled = isEnabled
-        self.showsExpansionTextWhenTruncated = showsExpansionTextWhenTruncated
+        if #available(macCatalyst 15, *) {
+            self.showsExpansionTextWhenTruncated = showsExpansionTextWhenTruncated
+        }
         self.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
         self.allowsDefaultTighteningForTruncation = allowsDefaultTighteningForTruncation
         if let baselineAdjustment { self.baselineAdjustment = baselineAdjustment }
