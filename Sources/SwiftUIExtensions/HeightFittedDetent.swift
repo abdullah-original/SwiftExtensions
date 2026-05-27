@@ -1,20 +1,28 @@
 import SwiftUI
 
-@available(iOS 16, macCatalyst 16, tvOS 16.0, watchOS 9.0, macOS 13, *)
+@available(iOS 16, macCatalyst 16, tvOS 16, watchOS 9, macOS 13, *)
 struct HeightFittingModifier: ViewModifier {
     let minimumHeight: CGFloat
     let otherDetents: Set<PresentationDetent>
     
-    @State private var contentDetent: PresentationDetent = .height(.zero)
+    @State private var contentHeight = CGFloat(0)
     
+    @ViewBuilder
     func body(content: Content) -> some View {
-        content
-            .onGeometryChange(for: CGFloat.self, of: \.size.height) { newSize in
-                self.contentDetent = .height(
-                    max(newSize, minimumHeight)
-                )
+        let view = content
+            .presentationDetents(otherDetents.union([.height(contentHeight)]))
+            .onGeometryChange(for: CGFloat.self, of: \.size.height) { newHeight in
+                self.contentHeight = max(newHeight, minimumHeight)
             }
-            .presentationDetents(otherDetents.union([contentDetent]))
+        
+        if #available(iOS 18, macCatalyst 18, tvOS 18, watchOS 11, macOS 15, visionOS 2, *) {
+            view
+                .onScrollGeometryChange(for: CGFloat.self, of: \.contentSize.height) { _, newHeight in
+                    self.contentHeight = max(contentHeight + newHeight, minimumHeight)
+                }
+        } else {
+            view
+        }
     }
 }
 
@@ -22,6 +30,7 @@ struct HeightFittingModifier: ViewModifier {
 public extension View {
     @ViewBuilder
     func presentationDetents(
+        /// Other detents can also be provided. However, as the sheet will automatically adjust to height, this is not needed or recommended. 
         _ detents: Set<PresentationDetent> = [],
         shouldFitToHeight: Bool,
         /// If the content is too small, this will serve as the minimum height.
@@ -43,14 +52,34 @@ public extension View {
 @available(iOS 17, macCatalyst 17, tvOS 17, watchOS 10, macOS 14, *)
 #Preview {
     @Previewable @State var isSheetPresented: Bool = false
+    @Previewable @State var pickerSelection: Int = 0
     
     Button("Sheet", systemImage: "square.and.arrow.up") {
-        isSheetPresented.toggle()
+        isSheetPresented = true
     }
+    .buttonStyle(.borderedProminent)
     .sheet(isPresented: $isSheetPresented) {
-        Text("Hello world")
-            .presentationDetents(shouldFitToHeight: true)
-            .presentationDragIndicator(.visible)
+        VStack {
+            Picker("", selection: $pickerSelection) {
+                Text("Text")
+                    .tag(0)
+                
+                Text("List")
+                    .tag(1)
+            }
+            .pickerStyle(.segmented)
+            
+            if pickerSelection == 0 {
+                Text("Hello world")
+            } else {
+                List(0...1005, id: \.self) {
+                    Text("\($0) cell")
+                }
+                .listStyle(.plain)
+            }
+        }
+        .padding()
+        .presentationDetents(shouldFitToHeight: true)
+        .presentationDragIndicator(.visible)
     }
-    
 }
