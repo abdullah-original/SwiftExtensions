@@ -8,7 +8,13 @@ let package = Package(
     products: [
         .library(
             name: "SwiftExtensions",
-            targets: ["FoundationExtensions", "UIKitExtensions", "SwiftUIExtensions", "QuickLookExtensions"]
+            targets: [
+                "FoundationExtensions",
+                "UIKitExtensions",
+                "SwiftUIExtensions",
+                "QuickLookExtensions",
+                "PDFKitExtensions"
+            ]
         ),
     ],
     targets: [
@@ -27,6 +33,10 @@ let package = Package(
         .target(
             name: "QuickLookExtensions",
             path: "Sources/QuickLookExtensions"
+        ),
+        .target(
+            name: "PDFKitExtensions",
+            path: "Sources/PDFKitExtensions"
         ),
         .testTarget(
             name: "FoundationExtensionsTests",
