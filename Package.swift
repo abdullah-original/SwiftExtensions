@@ -8,7 +8,7 @@ let package = Package(
     products: [
         .library(
             name: "SwiftExtensions",
-            targets: ["FoundationExtensions", "UIKitExtensions", "SwiftUIExtensions"]
+            targets: ["FoundationExtensions", "UIKitExtensions", "SwiftUIExtensions", "QuickLookExtensions"]
         ),
     ],
     targets: [
@@ -23,6 +23,10 @@ let package = Package(
         .target(
             name: "SwiftUIExtensions",
             path: "Sources/SwiftUIExtensions"
+        ),
+        .target(
+            name: "QuickLookExtensions",
+            path: "Sources/QuickLookExtensions"
         ),
         .testTarget(
             name: "FoundationExtensionsTests",
