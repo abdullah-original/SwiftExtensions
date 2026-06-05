@@ -16,3 +16,12 @@ public extension JSONEncoder {
         self.nonConformingFloatEncodingStrategy = nonConformingFloatEncodingStrategy
     }
 }
+
+public extension JSONEncoder.DateEncodingStrategy {
+    static let yearMonthDay = Self.formatted(
+        DateFormatter(
+            dateFormat: "yyyy-MM-dd",
+            calendar: .init(identifier: .gregorian)
+        )
+    )
+}

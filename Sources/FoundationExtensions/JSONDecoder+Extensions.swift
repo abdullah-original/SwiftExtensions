@@ -36,3 +36,12 @@ public extension JSONDecoder {
         self.assumesTopLevelDictionary = assumesTopLevelDictionary
     }
 }
+
+public extension JSONDecoder.DateDecodingStrategy {
+    static let yearMonthDay = Self.formatted(
+        DateFormatter(
+            dateFormat: "yyyy-MM-dd",
+            calendar: .init(identifier: .gregorian)
+        )
+    )
+}
