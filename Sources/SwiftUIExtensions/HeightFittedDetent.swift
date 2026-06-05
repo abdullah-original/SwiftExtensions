@@ -3,14 +3,13 @@ import SwiftUI
 @available(iOS 16, macCatalyst 16, tvOS 16, watchOS 9, macOS 13, *)
 struct HeightFittingModifier: ViewModifier {
     let minimumHeight: CGFloat
-    let otherDetents: Set<PresentationDetent>
     
     @State private var contentHeight = CGFloat(0)
     
     @ViewBuilder
     func body(content: Content) -> some View {
         let view = content
-            .presentationDetents(otherDetents.union([.height(contentHeight)]))
+            .presentationDetents([.height(contentHeight)])
             .onGeometryChange(for: CGFloat.self, of: \.size.height) { newHeight in
                 self.contentHeight = max(newHeight, minimumHeight)
             }
@@ -29,23 +28,10 @@ struct HeightFittingModifier: ViewModifier {
 @available(iOS 16, macCatalyst 16, tvOS 16.0, watchOS 9.0, macOS 13, *)
 public extension View {
     @ViewBuilder
-    func presentationDetents(
-        /// Other detents can also be provided. However, as the sheet will automatically adjust to height, this is not needed or recommended. 
-        _ detents: Set<PresentationDetent> = [],
-        shouldFitToHeight: Bool,
-        /// If the content is too small, this will serve as the minimum height.
-        minHeight: CGFloat = 75
-    ) -> some View {
-        if shouldFitToHeight {
-            self.modifier(
-                HeightFittingModifier(
-                    minimumHeight: minHeight,
-                    otherDetents: detents
-                )
-            )
-        } else {
-            self.presentationDetents(detents)
-        }
+    func presentationDetentsFitToHeight(minHeight: CGFloat = 75) -> some View {
+        self.modifier(
+            HeightFittingModifier(minimumHeight: minHeight)
+        )
     }
 }
 
@@ -72,14 +58,16 @@ public extension View {
             if pickerSelection == 0 {
                 Text("Hello world")
             } else {
-                List(0...1005, id: \.self) {
+                List(0...10, id: \.self) {
                     Text("\($0) cell")
                 }
-                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+                .scrollIndicators(.hidden)
             }
         }
-        .padding()
-        .presentationDetents(shouldFitToHeight: true)
+        .padding(.vertical, 24)
+        .padding(.horizontal)
         .presentationDragIndicator(.visible)
+        .presentationDetentsFitToHeight()
     }
 }
