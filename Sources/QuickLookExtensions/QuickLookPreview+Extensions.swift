@@ -3,14 +3,12 @@ import Foundation
 import SwiftUI
 import QuickLook
 
-@available(iOS 15, macCatalyst 15, tvOS 15, watchOS 8, macOS 12, *)
 public extension View {
     func quickLookPreview(remoteUrl: Binding<URL?>) -> some View {
         self.modifier(QuickLookPreviewRemoteUrl(url: remoteUrl))
     }
 }
 
-@available(iOS 15, macCatalyst 15, tvOS 15, watchOS 8, macOS 12, *)
 struct QuickLookPreviewRemoteUrl: ViewModifier {
     @Binding var url: URL?
     
