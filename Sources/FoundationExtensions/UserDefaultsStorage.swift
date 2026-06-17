@@ -1,5 +1,6 @@
 import Foundation
 
+/// Same behavior as [`@AppStorage`](https://developer.apple.com/documentation/SwiftUI/AppStorage) but can use be used anywhere in the code.
 @propertyWrapper
 public struct UserDefaultsStore<Value> {
     private let key: String
