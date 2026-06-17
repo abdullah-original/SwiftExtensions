@@ -4,8 +4,8 @@ public extension MeasurementFormatter {
     convenience init(
         unitStyle: UnitStyle,
         unitOptions: UnitOptions?,
-        locale: Locale?,
-        numberFormatter: NumberFormatter? = nil
+        numberFormatter: NumberFormatter? = nil,
+        locale: Locale? = nil
     ) {
         self.init()
         self.unitStyle = unitStyle
