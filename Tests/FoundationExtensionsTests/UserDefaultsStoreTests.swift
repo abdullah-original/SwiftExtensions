@@ -5,7 +5,7 @@ import Testing
 @Suite
 final class UserDefaultsStoreTests {
     
-    private let keys = ["testKey", "testKey2", "testKey3"]
+    private let keys = ["testKey", "testKey2"]
     
     deinit {
         keys.forEach(UserDefaults.standard.removeObject(forKey:))
@@ -16,6 +16,7 @@ final class UserDefaultsStoreTests {
         @UserDefaultsStore(self.keys[0]) var output: String? = "Hello, World!"
         
         #expect(output == "Hello, World!")
+        #expect(UserDefaults.standard.string(forKey: self.keys[0]) == nil)
     }
     
     @Test
@@ -25,5 +26,6 @@ final class UserDefaultsStoreTests {
         output = 42
         
         #expect(output == 42)
+        #expect(UserDefaults.standard.integer(forKey: self.keys[1]) == 42)
     }
 }
