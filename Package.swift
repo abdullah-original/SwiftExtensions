@@ -42,7 +42,13 @@ let package = Package(
             name: "FoundationExtensionsTests",
             dependencies: ["FoundationExtensions"],
             path: "Tests/FoundationExtensionsTests"
+        ),
+        .testTarget(
+            name: "SwiftUIExtensionsTests",
+            dependencies: ["SwiftUIExtensions"],
+            path: "Tests/SwiftUIExtensionsTests"
         )
+
     ],
     swiftLanguageModes: [.v6]
 )
