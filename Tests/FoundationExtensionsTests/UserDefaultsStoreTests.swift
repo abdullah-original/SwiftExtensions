@@ -2,7 +2,7 @@ import Foundation
 import Testing
 @testable import FoundationExtensions
 
-@Suite
+@Suite(.serialized)
 final class UserDefaultsStoreTests {
     
     private let keys = ["testKey", "testKey2"]
