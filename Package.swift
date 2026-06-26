@@ -24,6 +24,7 @@ let package = Package(
         ),
         .target(
             name: "UIKitExtensions",
+            dependencies: ["FoundationExtensions"],
             path: "Sources/UIKitExtensions"
         ),
         .target(

@@ -1,4 +1,5 @@
 import SwiftUI
+import FoundationExtensions
 #if canImport(UIKit)
 import UIKit
 #elseif canImport(AppKit)
@@ -24,3 +25,14 @@ public extension Image {
 #endif
     }
 }
+
+public extension Image {
+    static func appIcon(in bundle: Bundle = .main) -> Image {
+#if canImport(UIKit)
+        Image(uiImage: UIImage(named: bundle.appIcon)!)
+#elseif canImport(AppKit)
+        Image(nsImage: NSImage(named: bundle.appIcon)!)
+#endif
+    }
+}
+
