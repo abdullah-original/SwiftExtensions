@@ -29,6 +29,7 @@ let package = Package(
         ),
         .target(
             name: "SwiftUIExtensions",
+            dependencies: ["FoundationExtensions"],
             path: "Sources/SwiftUIExtensions"
         ),
         .target(
